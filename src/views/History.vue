@@ -31,9 +31,11 @@
               <span class="white-text badge red">Расход</span>
             </td>
             <td>
-              <button class="btn-small btn">
-                <i class="material-icons">open_in_new</i>
-              </button>
+              <router-link to="/detail-history">
+                <button class="btn-small btn">
+                  <i class="material-icons">open_in_new</i>
+                </button>
+              </router-link>
             </td>
           </tr>
         </tbody>
