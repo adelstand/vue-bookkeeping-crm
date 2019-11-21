@@ -9,25 +9,29 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import dateFilter from '@/filters/date.filter';
+import currencyFilter from '@/filters/currency.filter';
 import notificationPlugin from '@/utils/notification.plugin';
 import 'materialize-css/dist/js/materialize.min';
+import Loader from '@/components/app/Loader.vue';
 
 Vue.config.productionTip = false;
 
 Vue.use(Vuelidate);
 Vue.use(notificationPlugin);
 Vue.filter('date', dateFilter);
+Vue.filter('currencyFilter', currencyFilter);
+Vue.component('Loader', Loader);
 
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyA61zhR0cChuo8Dm4MyQRxSKXJFi4jtJj0',
-  authDomain: 'vue-bookkeeping-crm.firebaseapp.com',
-  databaseURL: 'https://vue-bookkeeping-crm.firebaseio.com',
-  projectId: 'vue-bookkeeping-crm',
-  storageBucket: 'vue-bookkeeping-crm.appspot.com',
-  messagingSenderId: '1037550530852',
-  appId: '1:1037550530852:web:80fe9624d57a37d01083b1',
-  measurementId: 'G-X0K3QLGLQS',
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASE_URL,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
+  measurementId: process.env.VUE_APP_MEASUREMENT_ID,
 });
 
 let app;
