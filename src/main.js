@@ -8,6 +8,7 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
+import tooltipDirective from './directives/tooltip.directive';
 import dateFilter from '@/filters/date.filter';
 import currencyFilter from '@/filters/currency.filter';
 import notificationPlugin from '@/utils/notification.plugin';
@@ -18,6 +19,7 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuelidate);
 Vue.use(notificationPlugin);
+Vue.directive('tooltip', tooltipDirective);
 Vue.filter('date', dateFilter);
 Vue.filter('currencyFilter', currencyFilter);
 Vue.component('Loader', Loader);
