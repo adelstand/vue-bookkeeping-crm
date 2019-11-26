@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Редактировать</h4>
+        <h4>{{'Edit' | localize}}</h4>
       </div>
 
       <form @submit.prevent="submitHandler">
@@ -15,7 +15,7 @@
             >{{c.title}}
             </option>
           </select>
-          <label>Выберите категорию</label>
+          <label>{{'ChooseCategory' | localize}}</label>
         </div>
 
         <div class="input-field">
@@ -25,12 +25,12 @@
             v-model="title"
             :class="{invalid: $v.title.$dirty && !$v.title.required}"
           />
-          <label for="name">Название</label>
+          <label for="name">{{'Name' | localize}}</label>
           <span
             class="helper-text invalid"
             v-if="$v.title.$dirty && !$v.title.required"
           >
-            Введите название категории
+            {{'EnterNameCategory' | localize}}
           </span>
         </div>
 
@@ -41,17 +41,17 @@
             v-model.number="limit"
             :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
           />
-          <label for="limit">Лимит</label>
+          <label for="limit">{{'Limit' | localize}}</label>
           <span
             class="helper-text invalid"
             v-if="$v.limit.$dirty && !$v.limit.minValue"
           >
-            Минимальное значение {{$v.limit.$params.minValue.min}}
+            {{'MinValue' | localize}} {{$v.limit.$params.minValue.min}}
           </span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Обновить
+          {{'Button_Update' | localize}}
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -61,6 +61,7 @@
 
 <script>
 import { required, minValue } from 'vuelidate/lib/validators';
+import localize from '@/filters/localize.filter';
 
 export default {
   props: {
@@ -116,7 +117,7 @@ export default {
         };
 
         await this.$store.dispatch('updateCategory', categoryData);
-        this.$notification(`Обновление категории ${this.title} прошло успешно`);
+        this.$notification(`${localize('UpdateCategory')} ${this.title} ${localize('WasSuccess')}`);
         this.$emit('updated', categoryData);
       } catch (e) {
         console.log(e);

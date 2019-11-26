@@ -1,3 +1,5 @@
+import localize from '@/filters/localize.filter';
+
 export default {
   install(Vue, options) {
     Vue.prototype.$notification = function notification(html) {
@@ -5,7 +7,7 @@ export default {
     };
 
     Vue.prototype.$error = function error(html) {
-      window.M.toast({ html: `[Ошибка]: ${html}` });
+      window.M.toast({ html: `[${localize('Error')}]: ${html}` });
     };
   },
 };

@@ -49,15 +49,21 @@ const routes = [
   },
   {
     path: '/history-detail/:id',
-    name: 'detail-history',
+    name: 'history-detail',
     meta: { layout: 'main-layout', auth: true },
-    component: () => import('../views/DetailHistory.vue'),
+    component: () => import('../views/HistoryDetail.vue'),
   },
   {
     path: '/planning',
     name: 'planning',
     meta: { layout: 'main-layout', auth: true },
     component: () => import('../views/Planning.vue'),
+  },
+  {
+    path: '*',
+    name: '404',
+    meta: { layout: 'main-layout', auth: true },
+    component: () => import('../views/NotFoundComponent.vue'),
   },
 ];
 
