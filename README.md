@@ -1,5 +1,10 @@
 # vue-crm
 
+## Change branch
+```
+git checkout master-v2
+```
+
 ## Project setup
 ```
 yarn install
